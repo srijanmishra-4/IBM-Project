@@ -32,9 +32,10 @@ const QuizComponent = ({ questions, testId, userInfo }) => {
     };
 
     const handleSubmit = () => {
+        const userAnswer = selectedOption === "" ? 'No Option Selected' : selectedOption
         const finalResponse = {
             ...currentQuestion,
-            User_Answer: selectedOption,
+            User_Answer: userAnswer,
         };
 
         const fullResponseList = [...userResponses, finalResponse];

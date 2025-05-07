@@ -52,12 +52,12 @@ const VerifyOtp = () => {
         try {
             const res = await axios.get(`https://wo2gjev1b6.execute-api.ap-south-1.amazonaws.com/InitDeploy/genrateOTP?email=${email}`);
             const { otp, timestamp } = res.data;
-            
+
             setGeneratedOTP(otp);
             setOtpTimestamp(timestamp);
             setTimer(30);
             setResendDisabled(true);
-            console.log(otp, timestamp)
+            // console.log(otp, timestamp)
         } catch (err) {
             console.log(err)
             setErrorMessage(err.response?.data?.message || 'Something went wrong.');
@@ -87,13 +87,14 @@ const VerifyOtp = () => {
             setOpenSnackbar(true);
             return;
         }
-
         if (inputOTP === generatedOTP) {
             if (isLogin) {
                 localStorage.setItem("token", token);
                 navigate('/home');
             } else {
-                navigate('/sign-in');
+                setErrorMessage('Invalid OTP.');
+                setOpenSnackbar(true);
+                // navigate('/sign-in');
             }
 
         } else {

@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  ibm-react-app:
+    container_name: ibm-react-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_BASE_URL: ${VITE_BASE_URL}
+    ports:
+      - "80:80"
+    restart: unless-stopped
