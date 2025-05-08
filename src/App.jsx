@@ -15,7 +15,8 @@ function App() {
         <Route path="/" element={token ? <Navigate to="/home" /> : <Navigate to="/sign-in" />} />
         <Route path="/sign-in" element={<SignInForm />} />
         <Route path="/verify-otp" element={<VerifyOtp />} />
-        <Route path="/home" element={token ? <HomePage /> : <Navigate to="/sign-in"/>} />
+        <Route path="/home" element = {<HomePage/>}/>
+        {/* <Route path="/home" element={token ? <HomePage /> : <Navigate to="/sign-in"/>} /> */}
         <Route path='/Competency-Test/*' element={ token ? <QuizHome/> : <Navigate to="/sign-in"/>}/>
       </Routes>
     </Router>

@@ -46,6 +46,7 @@ const SigninForm = () => {
       console.log(res.data.token)
       navigate('/verify-otp', { state: { email, token: res.data.token } });
     } catch (err) {
+      console.log(err)
       setErrorMessage(err.response?.data?.message || 'Something went wrong.');
       setOpenSnackbar(true);
     }
